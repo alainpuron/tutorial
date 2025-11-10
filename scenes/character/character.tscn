@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgbgkvyiv5b76"]
+
+[ext_resource type="SpriteFrames" uid="uid://dvbhx7rvc0rgi" path="res://scenes/character/sprite_frame_character.tres" id="1_6nn2t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuyo6"]
+size = Vector2(14, 16)
+
+[node name="Character" type="CharacterBody2D"]
+
+[node name="animation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = ExtResource("1_6nn2t")
+animation = &"idle"
+frame = 1
+frame_progress = 0.48251006
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_cuyo6")
