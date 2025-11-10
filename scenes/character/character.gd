@@ -1,7 +1,7 @@
 extends CharacterBody2D # the script can use the properties of
 
 
-@export var animation: Node
+@export var animation: AnimatedSprite2D
 
 var _velocity: float = 100.0
 var _jump_velocity: float = -300.0

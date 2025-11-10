@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgbgkvyiv5b76"]
+[gd_scene load_steps=4 format=3 uid="uid://bgbgkvyiv5b76"]
 
 [ext_resource type="SpriteFrames" uid="uid://dvbhx7rvc0rgi" path="res://scenes/character/sprite_frame_character.tres" id="1_6nn2t"]
+[ext_resource type="Script" uid="uid://rtu8orha23qw" path="res://scenes/character/character.gd" id="1_cuyo6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuyo6"]
 size = Vector2(14, 16)
 
-[node name="Character" type="CharacterBody2D"]
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+script = ExtResource("1_cuyo6")
+animation = NodePath("animation")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
