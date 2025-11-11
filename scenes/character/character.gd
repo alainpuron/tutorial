@@ -1,6 +1,6 @@
 extends CharacterBody2D # the script can use the properties of
 
-
+signal dead_character
 @export var animation: AnimatedSprite2D
 @export var area_2d: Area2D
 @export var character_red_material: ShaderMaterial
@@ -15,6 +15,7 @@ var _dead: bool = false
 
 
 func _ready():
+	add_to_group("characters")
 	area_2d.body_entered.connect(_on_area_2d_body_entered)
 	
 	
@@ -57,3 +58,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	animation.material = character_red_material # or animation.module = Color.(18.892,0.0,0.0,1.0)
 	_dead = true
 	animation.stop()
+	dead_character.emit()
