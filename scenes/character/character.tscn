@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgbgkvyiv5b76"]
+[gd_scene load_steps=6 format=3 uid="uid://bgbgkvyiv5b76"]
 
 [ext_resource type="SpriteFrames" uid="uid://dvbhx7rvc0rgi" path="res://scenes/character/sprite_frame_character.tres" id="1_6nn2t"]
 [ext_resource type="Script" uid="uid://rtu8orha23qw" path="res://scenes/character/character.gd" id="1_cuyo6"]
+[ext_resource type="Material" uid="uid://dr4bxuq345emn" path="res://scenes/character/character_material_red.tres" id="2_mutn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuyo6"]
-size = Vector2(14, 16)
+size = Vector2(14, 15)
 
-[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mutn8"]
+size = Vector2(14, 15)
+
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("animation", "area_2d")]
+collision_layer = 4
 script = ExtResource("1_cuyo6")
 animation = NodePath("animation")
+area_2d = NodePath("Area2D")
+character_red_material = ExtResource("2_mutn8")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -18,5 +25,16 @@ frame = 1
 frame_progress = 0.48251006
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+visible = false
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_cuyo6")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_mutn8")
